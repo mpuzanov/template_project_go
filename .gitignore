@@ -16,6 +16,8 @@
 *.code-workspace
 go.sum
 
+coverage.html
+
 # запускаемый файл
 project
 !cmd/project
