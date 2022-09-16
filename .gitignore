@@ -1,0 +1,21 @@
+/.vscode
+/bin
+/files
+/logs
+
+*.exe
+*.exe~
+*.dll
+*.so
+*.log
+*.env*
+*.out
+*.tmp
+*.zip
+
+*.code-workspace
+go.sum
+
+# запускаемый файл
+project
+!cmd/project

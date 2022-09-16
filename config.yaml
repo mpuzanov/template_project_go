@@ -1,0 +1,16 @@
+# config.yaml
+SITE:
+  TITLE: Test Site
+
+DB:
+  HOST: "localhost"
+  PORT: "27017"
+  USER: "admin"
+  PASSWORD: "password"
+  NAME: "testdb"
+  DATABASE: "db1"
+
+LOG:
+  LEVEL: DEBUG
+  FILE: "project.log"
+  IS_JSON: TRUE
