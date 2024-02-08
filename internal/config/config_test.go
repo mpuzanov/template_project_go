@@ -1,33 +1,52 @@
 package config
 
-import "testing"
+import (
+	"errors"
+	"testing"
+
+	"github.com/stretchr/testify/require"
+)
 
 func TestVersion(t *testing.T) {
-	assertCorrect := func(t testing.TB, got, want string) {
-		t.Helper()
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+
+	type testCase struct {
+		test        string
+		want        string
+		expectedErr error
+	}
+	// Create new test cases
+	testCases := []testCase{
+		{
+			test:        "is ok version",
+			want:        "development",
+			expectedErr: nil,
+		}, {
+			test:        "is not ok version",
+			want:        "not development",
+			expectedErr: errors.New("not development"),
+		},
 	}
 
-	t.Run("is ok version", func(t *testing.T) {
-		got := ShowVersion()
-		want := "development"
-		assertCorrect(t, got, want)
-	})
-
-	// t.Run("is not ok version", func(t *testing.T) {
-	// 	got := ShowVersion()
-	// 	want := "not development"
-	// 	assertCorrect(t, got, want)
-	// })
+	for _, tc := range testCases {
+		// Run Tests
+		t.Run(tc.test, func(t *testing.T) {
+			got := ShowVersion()
+			if tc.expectedErr != nil {
+				require.NotEqual(t, tc.want, got, tc.test)
+			} else {
+				require.Equal(t, tc.want, got, tc.test)
+				//t.Errorf("got %q want %q", got, tc.want)
+			}
+		})
+	}
 }
 
 func TestVersion2(t *testing.T) {
 	got := ShowVersion()
 	want := "development"
 
-	if got != want {
-		t.Errorf("got %q want %q", got, want)
-	}
+	require.Equal(t, want, got)
+	// if got != want {
+	// 	t.Errorf("got %q want %q", got, want)
+	// }
 }

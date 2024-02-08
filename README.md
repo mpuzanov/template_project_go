@@ -15,5 +15,10 @@ go mod tidy
 
 ## Используемые библиотеки
 
-- viper  (конфигурирование)
-- zerolog (логирование)
+- github.com/ilyakaznacheev/cleanenv  (конфигурирование)
+- slog (логирование)
+
+## Запуск с разными конфигами
+
+./project -c app.env
+./project -c config.yml

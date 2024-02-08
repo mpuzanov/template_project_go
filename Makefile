@@ -7,7 +7,7 @@ SOURCE=./cmd/${APP}
 GOBASE=$(shell pwd)
 RELEASE_DIR=$(GOBASE)/bin
 NOW := $(shell date "+%Y-%m-%d %H-%M-%S")
-Version=0.0.1
+Version=0.0.2
 
 .DEFAULT_GOAL = build
 GO_SRC_DIRS := $(shell \
@@ -53,8 +53,8 @@ release: ## Build executable
 	$(call print-target)
 	rm -rf ${RELEASE_DIR}${APP}*	
 	@GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X '${APP}/internal/config.Version=$(Version)'" -o ${RELEASE_DIR}/${APP}.exe ${SOURCE}
-#GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X '${APP}/internal/config.Version=$(Version)' -X '${APP}/internal/config.Time=$(NOW)'" -o ${APP} ${SOURCE}	
-#@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o ${RELEASE_DIR}/${APP} ${SOURCE}
+#	GOOS=windows GOARCH=amd64 go build -ldflags="-s -w -X '${APP}/internal/config.Version=$(Version)' -X '${APP}/internal/config.Time=$(NOW)'" -o ${APP} ${SOURCE}	
+#	@CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-s -w" -o ${RELEASE_DIR}/${APP} ${SOURCE}
 
 clean: ## Clean build directory
 	rm -f ./bin/${APP}

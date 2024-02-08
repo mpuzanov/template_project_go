@@ -8,7 +8,6 @@
 *.dll
 *.so
 *.log
-*.env*
 *.out
 *.tmp
 *.zip

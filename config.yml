@@ -1,0 +1,24 @@
+# config.yml
+
+# local dev prod
+env: local
+
+# для работы с БД
+db:
+  name: "testdb"
+  host: "localhost"
+  port: "27017"
+  user: "admin"
+  password: "password"  
+  database: "db1"
+
+# для работы с почтой
+mail:
+  server: smtp.mail.ru
+  port: 465
+  use_tls: false
+  use_ssl: true
+  username: 
+  password: 
+  timeout: 30
+  
